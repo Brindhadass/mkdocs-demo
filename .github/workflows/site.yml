@@ -1,20 +1,12 @@
-
-name: deploy-mkdocs-site
+name: site
 
 on:
   push:
     branches:
       - '**'
-  
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  contents: write
 
 jobs:
   deploy:
@@ -44,3 +36,4 @@ jobs:
           git add docs
           git commit -m "Deploy MkDocs site to docs folder" || echo "No changes to commit"
           git push origin HEAD
+
