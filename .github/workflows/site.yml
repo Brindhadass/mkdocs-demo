@@ -1,0 +1,44 @@
+
+name: deploy-mkdocs-site
+
+on:
+  push:
+    branches:
+      - main
+permissions:
+  contents: read
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install MkDocs and Material Theme
+        run: pip install mkdocs-material
+
+      - name: Build MkDocs Site
+        run: mkdocs build --site-dir public
+
+      - name: Upload GitHub Pages Artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
+
+        
