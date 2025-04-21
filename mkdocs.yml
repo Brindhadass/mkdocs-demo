@@ -1,0 +1,37 @@
+site_name: "GenAI Doc Quest"
+site_url: https://example.com
+theme:
+  name: material
+  logo: assets/logo.jpg  # Add a custom logo
+  favicon: assets/logo.jpg # Add a custom favicon
+  font:
+    text: Roboto
+    code: Roboto Mono
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+      primary: blue
+      accent: deep purple
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+      primary: light blue
+      accent: deep purple
+nav:
+  - Home: index.md
+  - Docs: 
+    - GenAI Doc Quest: documentation/introduction.md
+    - Installation: documentation/installation.md
+    - Browser support: documentation/browser_support.md
+    - Getting Started: documentation/getting_started.md
+    - key fetures and benefits: documentation/key_features_and_benefits.md
+    
+
+docs_dir: docs_src  # Change to your desired folder
+extra_css:
+  - overrides/style.css  # Add custom styles
+extra_javascript:
+  - javascripts/custom.js  
